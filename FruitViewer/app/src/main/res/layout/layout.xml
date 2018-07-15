@@ -14,7 +14,7 @@
         android:id="@+id/tv_fruitnames"
         android:layout_width="234dp"
         android:layout_height="100dp"
-        android:layout_gravity="center|fill"
+        android:layout_gravity="center"
         android:layout_weight="1"
         android:textSize="30dp"
         android:textAlignment="center"
