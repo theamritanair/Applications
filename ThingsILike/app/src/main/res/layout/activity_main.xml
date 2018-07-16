@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/love_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/love_image"
+        android:layout_alignParentEnd="true"
+        android:text="LOVE" />
+
+    <Button
+        android:id="@+id/hate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="HATE" />
+
+    <ImageView
+        android:id="@+id/love_image"
+        android:layout_width="match_parent"
+        android:layout_height="286dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/litchi" />
+
+    <ImageView
+        android:id="@+id/hate_image"
+        android:layout_width="match_parent"
+        android:layout_height="279dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+     android:scaleType="centerCrop"
+        android:src="@drawable/chiku" />
+
+</RelativeLayout>
