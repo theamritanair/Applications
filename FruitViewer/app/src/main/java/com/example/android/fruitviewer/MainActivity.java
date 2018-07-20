@@ -12,9 +12,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> fruitNameList ;
-    private ArrayList<Integer> fruitImages;
-
+    private ArrayList<Fruit> fruitList ;
 
     private RecyclerView.Adapter fruitAdapter;
 
@@ -27,55 +25,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        fruitAdapter = new FruitAdapter(createFruits(),getFruitImageList());
+        fruitAdapter = new FruitAdapter(createFruits());
 
         fruitViewer.setAdapter(fruitAdapter);
 
     }
 
-    public ArrayList<String> createFruits() {
-        fruitNameList = new ArrayList<String>();
-        fruitNameList.add("Apple");
-        fruitNameList.add("Banana");
-        fruitNameList.add("BlueBerries");
-        fruitNameList.add("Cherries");
-        fruitNameList.add("Grapes");
-        fruitNameList.add("Orange");
-        fruitNameList.add("Peach");
 
-        fruitNameList.add("Pear");
-        fruitNameList.add("Pineapple");
-        fruitNameList.add("Pomegranate");
-        fruitNameList.add("Raspberry");
-        fruitNameList.add("Strawberry");
-        fruitNameList.add("Watermelon");
-        Log.v("Fruit List",fruitNameList.toString());
+    public ArrayList<Fruit> createFruits() {
+        fruitList= new ArrayList<Fruit>();
 
-        return fruitNameList;
-
-
-    }
-
-    public ArrayList<Integer> getFruitImageList() {
-        fruitImages= new ArrayList<Integer>();
-
-        fruitImages.add(R.drawable.apple);
-        fruitImages.add(R.drawable.banana);
-        fruitImages.add(R.drawable.blueberries);
-        fruitImages.add(R.drawable.cherries);
-        fruitImages.add(R.drawable.grapes);
-        fruitImages.add(R.drawable.orange);
-        fruitImages.add(R.drawable.peach);
-        fruitImages.add(R.drawable.pear);
-        fruitImages.add(R.drawable.pineapple);
-        fruitImages.add(R.drawable.pomegranate);
-        fruitImages.add(R.drawable.raspberry);
-        fruitImages.add(R.drawable.strawberry);
-        fruitImages.add(R.drawable.watermelon);
+        fruitList.add(new Fruit("Apple",R.drawable.apple));
+        fruitList.add(new Fruit("Banana",R.drawable.banana));
+        fruitList.add(new Fruit("Blueberries",R.drawable.blueberries));
+        fruitList.add(new Fruit("Cherries",R.drawable.cherries));
+        fruitList.add(new Fruit("Grapes",R.drawable.grapes));
+        fruitList.add(new Fruit("Orange",R.drawable.orange));
+        fruitList.add(new Fruit("Peach",R.drawable.peach));
+        fruitList.add(new Fruit("Pear",R.drawable.pear));
+        fruitList.add(new Fruit("Pineapple",R.drawable.pineapple));
+        fruitList.add(new Fruit("Pomegranate",R.drawable.pomegranate));
+        fruitList.add(new Fruit("Raspberry",R.drawable.raspberry));
+        fruitList.add(new Fruit("Strawberry",R.drawable.strawberry));
+        fruitList.add(new Fruit("Watermelon",R.drawable.watermelon));
 
 
 
 
-        return fruitImages;
+        return fruitList;
     }
 }

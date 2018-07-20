@@ -15,15 +15,15 @@ import butterknife.ButterKnife;
 
 class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.fruitViewHolder> {
 
-    private ArrayList<String> fruitNamesList;
-    private ArrayList<Integer> fruitImageList;
+    private ArrayList<Fruit> fruitNamesList;
 
 
 
-    public FruitAdapter(ArrayList<String> fruits, ArrayList<Integer> fruitImages) {
+
+    public FruitAdapter(ArrayList<Fruit> fruits) {
 
         fruitNamesList = fruits;
-        fruitImageList= fruitImages;
+
     }
 
     @NonNull
@@ -37,8 +37,8 @@ class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.fruitViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull fruitViewHolder fruitViewHolder, int position) {
-        fruitViewHolder.fruitImageview.setImageResource(fruitImageList.get(position));
-        fruitViewHolder.fruitNameView.setText(fruitNamesList.get(position));
+        fruitViewHolder.fruitImageview.setImageResource(fruitNamesList.get(position).getImage());
+        fruitViewHolder.fruitNameView.setText(fruitNamesList.get(position).getFruitName());
 
 
 
@@ -46,7 +46,8 @@ class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.fruitViewHolder> {
 
     @Override
     public int getItemCount() {
-        return fruitImageList.size();
+
+        return fruitNamesList.size();
     }
 
 

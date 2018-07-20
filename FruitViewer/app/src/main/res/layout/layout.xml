@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/iv_fruitImage"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
@@ -16,7 +16,8 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:textSize="30dp"
+        android:layout_marginTop="25dp"
+        android:textSize="20dp"
         android:textAlignment="center"
         tools:text="Fruit Name" />
 
