@@ -33,7 +33,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public phoneViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.layout_xml, parent, false);
         phoneViewHolder viewHolder = new phoneViewHolder(v);
-        return viewHolder;
+        return new phoneViewHolder(v);
     }
 
     @Override
