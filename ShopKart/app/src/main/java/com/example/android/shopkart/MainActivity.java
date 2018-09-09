@@ -11,11 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter phoneAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    @BindView(R.id.loadingPanel)
+            ProgressBar spinner;
+
 
     CardView cardView;
 
@@ -36,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        Bundle bundle = new Bundle();
+        bundle = getIntent().getExtras();
+
+
+
+
 
 
         cardView = (CardView) findViewById(R.id.phoneCard);
@@ -56,46 +70,49 @@ public class MainActivity extends AppCompatActivity {
 
         Call<List<Phone>> call;
 
-        Bundle bundle = new Bundle();
-        bundle = getIntent().getExtras();
-
-        if (bundle != null) {
-            String model = bundle.getString("model");
-            String manufacturer = bundle.getString("manufacturer");
-            int minprice = bundle.getInt("minprice");
-            int maxprice = bundle.getInt("maxprice");
 
 
-            if (model == null && manufacturer == null && minprice == 0 && maxprice == 0) {
-
-                call = api.getPhone();
-            } else {
-
-                call = api.getPhone(manufacturer, model, minprice, maxprice);
-            }
+            if(bundle!=null) {
+                String model = bundle.getString("model");
+                String manufacturer = bundle.getString("manufacturer");
+                Integer minprice = bundle.getInt("minprice");
+                Integer maxprice = bundle.getInt("maxprice");
 
 
-            call.enqueue(new Callback<List<Phone>>() {
-                @Override
-                public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
-                    Log.i("url", call.request().url().toString());
-                    List<Phone> list = response.body();
+                if (model == null && manufacturer == null && minprice == 0 && maxprice == 0) {
+
+                    call = api.getPhone();
+                } else {
+
+                    call = api.getPhone(manufacturer, model, minprice, maxprice);
+                }
+
+
+                call.enqueue(new Callback<List<Phone>>() {
+                    @Override
+                    public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
+                        spinner.setVisibility(View.GONE);
+                        Log.i("url", call.request().url().toString());
+                        List<Phone> list = response.body();
 
 //                for(int i=0;i<list.size();i++){
 //                    String model=(list.get(i).getModel());
 //                    String url=(list.get(i).getImageUrl());
 //                    phoneList.add( new Phone(model,url));
 //                }
-                    recyclerView.setAdapter(new PhoneAdapter(MainActivity.this, list));
-//                renderPhones(list);
-                }
+                        recyclerView.setAdapter(new PhoneAdapter(MainActivity.this, list));
 
-                @Override
-                public void onFailure(Call<List<Phone>> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }
+//                renderPhones(list);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Phone>> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+
     }
 
     @Override
