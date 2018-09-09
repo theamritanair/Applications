@@ -70,31 +70,16 @@ public class MainActivity extends AppCompatActivity {
 
         Call<List<Phone>> call;
 
-                String model,manufacturer;
 
 
-                try{
-                    model = bundle.getString("model");
-                }catch(NullPointerException n){
-                    model=null;
-                }
-               try{
-                    manufacturer = bundle.getString("manufacturer");
-               }catch (NullPointerException n){
-                    manufacturer=null;
-               }
+            if(bundle!=null) {
+                String model = bundle.getString("model");
+                String manufacturer = bundle.getString("manufacturer");
                 Integer minprice = bundle.getInt("minprice");
                 Integer maxprice = bundle.getInt("maxprice");
 
-                if(minprice==-1){
-                    minprice=null;
-                }
-                if(maxprice==-1){
-                    maxprice=null;
-                }
 
-
-                if (model == null || manufacturer == null || minprice == null || maxprice == null) {
+                if (model == null && manufacturer == null && minprice == 0 && maxprice == 0) {
 
                     call = api.getPhone();
                 } else {
@@ -126,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
+            }
 
     }
 
