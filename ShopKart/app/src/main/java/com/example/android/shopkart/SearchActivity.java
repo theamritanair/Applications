@@ -12,10 +12,10 @@ import butterknife.BindView;
 public class SearchActivity extends AppCompatActivity {
 
     @BindView(R.id.modelName)
-    EditText modelName;
+    EditText model;
 
     @BindView(R.id.manufacturerName)
-    EditText manufacturerName;
+    EditText manufacturer;
 
     @BindView(R.id.minPrice)
     EditText minPrice;
@@ -36,33 +36,39 @@ public class SearchActivity extends AppCompatActivity {
 
 
     }
+
+
     public void search(View view){
 
 
-        String manufacturer = manufacturerName.getText().toString();
-        if(manufacturer.equals("")){
-            manufacturer = null;
-        }
+        Intent intent=new Intent(SearchActivity.this,MainActivity.class);
 
-        String model = modelName.getText().toString();
-        if(model.equals("")){
-            model = null;
+        Bundle bundle=new Bundle();
+
+        String manufacturerName = manufacturer.getText().toString();
+        if(manufacturerName.equals("")){
+            manufacturerName=null;
         }
+        bundle.putString("manufacturer",manufacturerName);
+
+        String modelName = model.getText().toString();
+        if(modelName.equals("")){
+            modelName = null;
+        }
+        bundle.putString("model",modelName);
         String minprice = minPrice.getText().toString();
         if(minprice.equals("")){
             minprice = null;
         }
+        bundle.putInt("minprice",Integer.parseInt(minprice));
 
         String maxprice = maxPrice.getText().toString();
         if(maxprice.equals("")){
             maxprice = null;
         }
+        bundle.putInt("maxprice",Integer.parseInt(maxprice));
+        intent.putExtras(bundle);
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("manufacturer",manufacturer);
-        intent.putExtra("model",model);
-        intent.putExtra("minPrice",minprice);
-        intent.putExtra("maxPrice",maxprice);
 
         startActivity(intent);
 

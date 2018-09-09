@@ -34,10 +34,10 @@ public class SalesAdapter extends RecyclerView.Adapter<SalesAdapter.salesViewHol
     @Override
     public void onBindViewHolder(@NonNull salesViewHolder holder, int position) {
     Sales sale = salesList.get(position);
-    holder.invoiceNumber.setText(""+ sale.getInvoiceNumber());
-    holder.username.setText(""+sale.getUsername());
-    holder.quantity.setText(""+sale.getQuantity());
-    holder.model.setText(""+sale.getModel());
+    holder.invoiceNumber.setText("Invoice Number: "+ sale.getInvoiceNumber());
+    holder.username.setText("Username: "+sale.getUsername());
+    holder.quantity.setText("Quantity: "+sale.getQuantity());
+    holder.model.setText("Model: "+sale.getModel());
 
 
     }

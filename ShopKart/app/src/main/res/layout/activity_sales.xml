@@ -10,7 +10,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_margin="10dp"
         android:id="@+id/salesCard"
         >
 
@@ -20,7 +20,7 @@
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_gravity="left"
                 android:layout_marginTop="10dp"
                 android:id="@+id/invoice"
@@ -29,7 +29,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_gravity="left"
                 android:id="@+id/modelSales"
                 android:textSize="15sp"
@@ -37,7 +37,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_gravity="left"
                android:id="@+id/usernamesales"
                 android:textSize="15sp"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_gravity="left"
                 android:textSize="15sp"
                 android:id="@+id/quantity"

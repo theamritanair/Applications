@@ -38,20 +38,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         cardView = (CardView) findViewById(R.id.phoneCard);
         recyclerView =
                 findViewById(R.id.recyclerView);
-        layoutManager=new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+
+        layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        getPhone();
 
-    }
-
-    String manufacturer;
-    String model;
-
-    private void getPhone() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -60,39 +53,49 @@ public class MainActivity extends AppCompatActivity {
 
         Api api = retrofit.create(Api.class);
 
-        String maxPrice,minPrice;
 
         Call<List<Phone>> call;
 
-        minPrice = getIntent().getStringExtra("minprice");
+        Bundle bundle = new Bundle();
+        bundle = getIntent().getExtras();
 
-        maxPrice = getIntent().getStringExtra("maxprice");
-        if (manufacturer != null || model != null|| minPrice!=null||maxPrice!=null) {
-            call = api.getPhone(manufacturer, model, minPrice, maxPrice);
-        } else {
-            call = api.getPhone();
-        }
+        if (bundle != null) {
+            String model = bundle.getString("model");
+            String manufacturer = bundle.getString("manufacturer");
+            int minprice = bundle.getInt("minprice");
+            int maxprice = bundle.getInt("maxprice");
 
-        call.enqueue(new Callback<List<Phone>>() {
-            @Override
-            public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
-                Log.i("url", call.request().url().toString());
-                List<Phone> list=response.body();
+
+            if (model == null && manufacturer == null && minprice == 0 && maxprice == 0) {
+
+                call = api.getPhone();
+            } else {
+
+                call = api.getPhone(manufacturer, model, minprice, maxprice);
+            }
+
+
+            call.enqueue(new Callback<List<Phone>>() {
+                @Override
+                public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
+                    Log.i("url", call.request().url().toString());
+                    List<Phone> list = response.body();
 
 //                for(int i=0;i<list.size();i++){
 //                    String model=(list.get(i).getModel());
 //                    String url=(list.get(i).getImageUrl());
 //                    phoneList.add( new Phone(model,url));
 //                }
-                recyclerView.setAdapter(new PhoneAdapter(MainActivity.this,list));
+                    recyclerView.setAdapter(new PhoneAdapter(MainActivity.this, list));
 //                renderPhones(list);
-            }
+                }
 
-            @Override
-            public void onFailure(Call<List<Phone>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<Phone>> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
     @Override
@@ -132,8 +135,7 @@ public class MainActivity extends AppCompatActivity {
     public void search(){
             Intent intent = new Intent(MainActivity.this,SearchActivity.class);
             startActivity(intent);
-            manufacturer = getIntent().getStringExtra("manufacturer");
-            model = getIntent().getStringExtra("model");
+
 
     }
     public void sales(){
