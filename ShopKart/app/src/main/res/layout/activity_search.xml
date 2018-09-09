@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="248dp"
+        android:id="@+id/modelName"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="140dp"
+        android:gravity="center"
+        android:hint="Model" />
+
+    <EditText
+        android:layout_width="244dp"
+        android:id="@+id/manufacturerName"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="40dp"
+        android:hint="Manufacturer"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="40dp"
+        android:id="@+id/maxPrice"
+        android:hint="Maximum Price"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/minPrice"
+        android:layout_gravity="center"
+        android:paddingTop="40dp"
+        android:hint="Minimum Price"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:layout_gravity="center"
+        android:onClick="search"/>
+
+</LinearLayout>

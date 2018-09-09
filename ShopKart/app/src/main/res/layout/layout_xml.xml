@@ -8,19 +8,17 @@
         android:id="@+id/phoneCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp">
+        android:layout_margin="10dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/linear">
 
             <ImageView
                 android:id="@+id/phoneImage"
                 android:scaleType="fitCenter"
-                android:padding="10dp"
                 android:layout_width="160dp"
                 android:layout_height="250dp" />
 
@@ -31,7 +29,23 @@
                 android:layout_height="22dp"
                 android:layout_gravity="center"
                 android:textSize="15sp"
-                tools:text="Model" />
+                tools:text="Model"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:textSize="15sp"
+                android:id="@+id/phoneManufacturer"
+                tools:text="Manufacturer"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:id="@+id/phonePrice"
+                android:textSize="15sp"
+                tools:text="Price"
+                android:layout_gravity="center"
+                />
 
         </LinearLayout>
 

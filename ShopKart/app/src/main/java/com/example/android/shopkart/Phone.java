@@ -1,16 +1,18 @@
 package com.example.android.shopkart;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Phone {
     String manufacturer;
     String model;
     String price;
-    String imageUrl;
+    String image;
 
-    public Phone( String model,String imageUrl) {
-//        this.manufacturer = manufacturer;
+    public Phone(String manufacturer,String price, String model,String imageUrl) {
+        this.manufacturer = manufacturer;
         this.model = model;
-//        this.price = price;
-        this.imageUrl = imageUrl;
+        this.price = price;
+        this.image = imageUrl;
     }
 
     public String getManufacturer() {
@@ -25,8 +27,8 @@ public class Phone {
         return price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImage() {
+        return image;
     }
 
     public void setManufacturer(String manufacturer) {
@@ -42,6 +44,6 @@ public class Phone {
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+        this.image = imageUrl;
     }
 }
