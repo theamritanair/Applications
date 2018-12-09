@@ -1,6 +1,8 @@
 package com.example.android.githubapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +14,11 @@ import java.util.ArrayList;
 
 public class GitAdapter extends RecyclerView.Adapter<GitAdapter.GitViewHolder> {
 
-    private ArrayList<Repository> gitArray;
+    private static ArrayList<Repository> gitArray;
+
+    public ArrayList<Repository> getGitArray() {
+        return gitArray;
+    }
 
     Context context;
 
@@ -49,7 +55,22 @@ public class GitAdapter extends RecyclerView.Adapter<GitAdapter.GitViewHolder> {
 
             gitText = itemView.findViewById(R.id.gitText);
 
+            gitText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("value",gitArray.get(getAdapterPosition()).getRepository());
+                    Intent intent = new Intent(context.getApplicationContext(),CommitActivity.class);
+                    context.startActivity(intent);
+                }
+            });
+
         }
+
+
+
     }
 }
 

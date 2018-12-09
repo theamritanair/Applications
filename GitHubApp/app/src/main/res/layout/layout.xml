@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="wrap_content"
+android:layout_width="match_parent"
 android:layout_height="wrap_content"
 tools:context=".MainActivity">
 
 
     <TextView
         android:id="@+id/gitText"
-        android:layout_width="192dp"
-        android:layout_height="wrap_content" />
-
-
-
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="HELLO"
+        android:gravity="center"
+        android:textSize="15sp"/>
 
 </LinearLayout>

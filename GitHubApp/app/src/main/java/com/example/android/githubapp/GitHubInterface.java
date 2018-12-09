@@ -12,4 +12,9 @@ public interface GitHubInterface {
 
     @GET("/users/{name}/repos")
     Call<ArrayList<Repository>> getRepositories(@Path("name") String name);
+
+
+    @GET("/repos/{name}/{repo}/commits")
+    Call<ArrayList<Commit>> getCommits(@Path("name") String name,
+                                       @Path("repo") String repository);
 }
